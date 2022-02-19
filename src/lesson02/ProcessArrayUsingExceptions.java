@@ -21,21 +21,21 @@ public class ProcessArrayUsingExceptions {
 
         System.out.println("Test with arrwithwrongdate");
         try {
-            System.out.println("Сумма всех элементов массива arrwithWrongDate равна " + MethodWithExceptionForArray.sumElemetsInCheckedArray(arrwithwrongdate) + ".\n");
+            System.out.println("Sum all elements of array = " + MethodWithExceptionForArray.sumElemetsInCheckedArray(arrwithwrongdate) + ".\n");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
         System.out.println("Test with arrwithwrongsize");
         try {
-            System.out.println("Сумма всех элементов массива arrwithWrongSize равна " + MethodWithExceptionForArray.sumElemetsInCheckedArray(arrwithwrongsize) + ".\n");
+            System.out.println("Sum all elements of array =  " + MethodWithExceptionForArray.sumElemetsInCheckedArray(arrwithwrongsize) + ".\n");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
         System.out.println("Test with correctarr");
         try {
-            System.out.println("Сумма всех элементов массива correctarr равна " + MethodWithExceptionForArray.sumElemetsInCheckedArray(correctarr) + ".\n");
+            System.out.println("Sum all elements of array =  " + MethodWithExceptionForArray.sumElemetsInCheckedArray(correctarr) + ".\n");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
