@@ -8,7 +8,7 @@ public final class ApplicationGlobalState {
 
     private static ApplicationGlobalState INSTANCE;
     private String selectedCity = null;
-    private final String apiKeyForCity = "HdFtWAHAqnCKgYczZGqfKIEjiAl65MhC";
+    private final String apiKeyForCity = "rulpkg0897";
 
     private ApplicationGlobalState() {
     }

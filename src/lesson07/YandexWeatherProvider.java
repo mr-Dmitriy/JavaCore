@@ -90,7 +90,6 @@ public class YandexWeatherProvider implements WeatherProvider {
             if (periods.equals(Periods.NOW)) {
                 System.out.println(
                         "В городе " + city +
-//                        "В городе " + ApplicationGlobalState.getInstance().getSelectedCity() +
                                 " сегодня (" + forecast.getDate() +
                                 ") " + forecast.getParts().getDay_short().getCondition() +
                                 ", температура " + forecast.getParts().getDay_short().getTemp()
@@ -99,7 +98,6 @@ public class YandexWeatherProvider implements WeatherProvider {
             if (periods.equals(Periods.FIVE_DAYS)) {
                 System.out.println(
                         "В городе " + city +
-//                    "В городе " + ApplicationGlobalState.getInstance().getSelectedCity() +
                                 " на дату " + forecast.getDate() +
                                 " ожидается " + forecast.getParts().getDay_short().getCondition() +
                                 ", температура " + forecast.getParts().getDay_short().getTemp()
@@ -121,15 +119,17 @@ public class YandexWeatherProvider implements WeatherProvider {
 
         HttpUrl detectLocationURL = new HttpUrl.Builder()
                 .scheme("https")
-                .host("open.mapquestapi.com")
-                .addPathSegment("geocoding")
-                .addPathSegment("v1")
-                .addPathSegment("address")
+                .host("catalog.api.2gis.com")
+                .addPathSegment("3.0")
+                .addPathSegment("items")
+                .addPathSegment("geocode")
+                .addQueryParameter("q", selectedCity)
+                .addQueryParameter("fields", "items.point")
                 .addQueryParameter("key", apiKeyForCity)
-                .addQueryParameter("location", selectedCity)
                 .build();
 
         Request request = new Request.Builder()
+                .addHeader("accept", "application/json")
                 .url(detectLocationURL)
                 .build();
 
@@ -146,10 +146,10 @@ public class YandexWeatherProvider implements WeatherProvider {
             throw new IOException("Server returns 0 cities");
         }
 
-        for (JsonNode res : objectMapper.readTree(jsonResponse).at("/results")) {
-            for (JsonNode loc : res.at("/locations")) {
-                String lat = loc.at("/latLng/lat").asText();
-                String lon = loc.at("/latLng/lng").asText();
+        for (JsonNode res : objectMapper.readTree(jsonResponse)) {
+            for (JsonNode loc : res.at("/items")) {
+                String lat = loc.at("/point/lat").asText();
+                String lon = loc.at("/point/lon").asText();
                 System.out.println("Город " + selectedCity + " найден на широте " + lat + " и долготе " + lon);
                 return new String[]{lat, lon};
             }

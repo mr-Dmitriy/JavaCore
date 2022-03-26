@@ -18,7 +18,7 @@ public class RunClassGeocode {
                 .scheme("https")
                 .host("geocode-maps.yandex.ru")
                 .addPathSegment("1.x")
-                .addQueryParameter("apikey", "36dc63d4-c9f1-49f7-9b34-8ddeb6969aa0")
+                .addQueryParameter("apikey", ApplicationGlobalState.getInstance().getApiKeyForCity())
                 .addQueryParameter("geocode", "Moscow")
                 .build();
 
