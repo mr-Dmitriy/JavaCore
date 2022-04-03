@@ -68,7 +68,7 @@ public class UserInterface {
 
     private void checkIsExit(String result) {
         if (result.equals("Exit") || result.equals("exit")) {
-            System.out.println("Завершаю работу");
+            System.out.println("Finish work");
             System.exit(0);
         }
     }

@@ -129,9 +129,9 @@ public class YandexWeatherProvider implements WeatherProvider {
             System.out.println("There is no such date");
         }else {
             for (WeatherData weatherData : weatherDataList) {
-                String valveRes = "In town " + weatherData.getCity() + " on date " +  weatherData.getLocalDate() +
+                String value = "In town " + weatherData.getCity() + " on date " +  weatherData.getLocalDate() +
                         " awaits " + weatherData.getText() + ", temperature " + weatherData.getTemperature();
-                System.out.println(valveRes);
+                System.out.println(value);
             }
         }
     }
@@ -144,7 +144,7 @@ public class YandexWeatherProvider implements WeatherProvider {
         String selectedCity = ApplicationGlobalState.getInstance().getSelectedCity();
         String apiKeyForCity = ApplicationGlobalState.getInstance().getApiKeyForCity();
 
-        System.out.println("Поиск города " + selectedCity + "...");
+        System.out.println("Search the city " + selectedCity + "...");
 
         HttpUrl detectLocationURL = new HttpUrl.Builder()
                                                .scheme("https")
