@@ -1,0 +1,9 @@
+package lesson08.enums;
+
+public enum Functionality {
+    GET_CURRENT_WEATHER,
+    GET_WEATHER_IN_NEXT_5_DAYS,
+    GET_WEATHER_DATA_BY_SELECTING_DATE_FROM_BD,
+    GET_ALL_WEATHER_DATE_FROM_BD,
+    GET_CLEAR_BASE,
+}
